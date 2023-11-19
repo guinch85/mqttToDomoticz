@@ -54,7 +54,7 @@ client.on("message", (topic, message) => {
     } else {
         for (let d of devices) {
             if (topic === d.topic) {
-                console.log("Received data form " + d.name);
+                console.log("Received data from " + d.name);
                 let msg = JSON.parse(message);
                 console.log(msg);
                 let requestReady = false;
@@ -68,7 +68,6 @@ client.on("message", (topic, message) => {
                     // console.log(httpOptions.path);
                     requestReady = true;
                 }
-
 
                 if (requestReady) {
                     let req = http.request(httpOptions);
