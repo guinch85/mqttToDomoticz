@@ -16,6 +16,12 @@ let devices = [
         type: "Temp+Humidity"
     },
     {
+        name: "Capteur chambre 1",
+        topic: "zigbee2mqtt/Capteur chambre 1",
+        domoticzIdx: 1605,
+        type: "Temp+Humidity"
+    },
+    {
         name: "Capteur cuisine",
         topic: "zigbee2mqtt/Capteur cuisine",
         domoticzIdx: 1602,
