@@ -31,6 +31,11 @@ client.on("connect", () => {
             console.log("Subscribe to domoticz/out/Lampe bureau");
         }
     });
+    client.subscribe("domoticz/out/Capteur chambre 1", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Capteur chambre 1");
+        }
+    });
 });
 
 client.on("message", (topic, message) => {
