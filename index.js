@@ -57,7 +57,7 @@ client.on("message", (topic, message) => {
         }
 
         if (msg.name === "Capteur chambre 1") {
-            let temp = Math.trunc(parseInt(msg.svalue1) * 100);
+            let temp = Math.trunc(parseFloat(msg.svalue1) * 100);
 
             let cmd = {
                 "external_measured_room_sensor": temp
