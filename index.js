@@ -51,6 +51,17 @@ client.on("message", (topic, message) => {
             client.publish("zigbee2mqtt/Lampe bureau/set", JSON.stringify(cmd));
         }
 
+        if (msg.name === "Capteur chambre 1") {
+            let temp = Math.trunc(parseInt(msg.svalue1) * 100);
+
+            let cmd = {
+                "external_measured_room_sensor": temp
+            }
+            console.log(cmd);
+            client.publish("zigbee2mqtt/Vanne chambre 1/set", JSON.stringify(cmd));
+        }
+
+
     } else {
         for (let d of devices) {
             if (topic === d.topic) {
