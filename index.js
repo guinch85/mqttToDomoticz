@@ -83,7 +83,7 @@ client.on("message", (topic, message) => {
                 "state": state
             }
             console.log(cmd);
-            client.publish("zigbeeExt/Ext - Lampe bar/set", JSON.stringify(cmd));
+            client.publish("zigbeeExt/Lampe bar/set", JSON.stringify(cmd));
         }
         if (msg.name === "Ext - Lampe toilette") {
             let state = (msg.nvalue === 2) ? "ON" : "OFF";
@@ -91,7 +91,7 @@ client.on("message", (topic, message) => {
                 "state": state
             }
             console.log(cmd);
-            client.publish("zigbeeExt/Ext - Lampe toilette/set", JSON.stringify(cmd));
+            client.publish("zigbeeExt/Lampe toilette/set", JSON.stringify(cmd));
         }
 
     } else {
