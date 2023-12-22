@@ -19,7 +19,7 @@ const client = mqtt.connect("mqtt://" + mqttConfig.host + ":" + mqttConfig.port)
 
 client.on("connect", () => {
     for (let d of devices) {
-        client.subscribe("zigbee2mqtt/" + d.name, (err) => {
+        client.subscribe(d.topic, (err) => {
             if (!err) {
                 console.log("Subscribe to " + d.name);
             }
