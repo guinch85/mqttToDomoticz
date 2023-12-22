@@ -11,43 +11,43 @@ let domoticzApiConfig = {
 let devices = [
     {
         name: "Capteur bureau",
-        topic: "zigbee2mqtt/Capteur bureau",
+        topic: "zigbeeHome/Capteur bureau",
         domoticzIdx: 1599,
         type: "Temp+Humidity"
     },
     {
         name: "Capteur chambre 1",
-        topic: "zigbee2mqtt/Capteur chambre 1",
+        topic: "zigbeeHome/Capteur chambre 1",
         domoticzIdx: 1605,
         type: "Temp+Humidity"
     },
     {
         name: "Capteur chambre 2",
-        topic: "zigbee2mqtt/Capteur chambre 2",
+        topic: "zigbeeHome/Capteur chambre 2",
         domoticzIdx: 1606,
         type: "Temp+Humidity"
     },
     {
         name: "Capteur cuisine",
-        topic: "zigbee2mqtt/Capteur cuisine",
+        topic: "zigbeeHome/Capteur cuisine",
         domoticzIdx: 1602,
         type: "Temp+Humidity"
     },
     {
         name: "Capteur salle de bain",
-        topic: "zigbee2mqtt/Capteur salle de bain",
+        topic: "zigbeeHome/Capteur salle de bain",
         domoticzIdx: 1603,
         type: "Temp+Humidity"
     },
     {
         name: "Capteur salon",
-        topic: "zigbee2mqtt/Capteur salon",
+        topic: "zigbeeHome/Capteur salon",
         domoticzIdx: 1598,
         type: "Temp+Humidity"
     },
     {
         name: "Interrupteur bureau",
-        topic: "zigbee2mqtt/Interrupteur bureau",
+        topic: "zigbeeHome/Interrupteur bureau",
         domoticzIdx: 1601,
         type: "Text"
     },

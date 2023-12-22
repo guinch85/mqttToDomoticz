@@ -98,7 +98,7 @@ client.on("message", (topic, message) => {
                 "brightness": brightness
             }
             console.log(cmd);
-            client.publish("zigbee2mqtt/Lampe bureau/set", JSON.stringify(cmd));
+            client.publish("zigbeeHome/Lampe bureau/set", JSON.stringify(cmd));
         }
 
         if (msg.name === "Capteur chambre 1") {
@@ -108,7 +108,7 @@ client.on("message", (topic, message) => {
                 "external_measured_room_sensor": temp
             }
             console.log(cmd);
-            client.publish("zigbee2mqtt/Vanne chambre 1/set", JSON.stringify(cmd));
+            client.publish("zigbeeHome/Vanne chambre 1/set", JSON.stringify(cmd));
         }
 
 
