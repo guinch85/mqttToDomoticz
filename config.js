@@ -59,6 +59,18 @@ let devices = [
         domoticzIdx: 1607,
         type: "Temp+Humidity"
     },
+    {
+        name: "Ext - Interrupteur bar",
+        topic: "zigbeeExt/Interrupteur bar",
+        domoticzIdx: 1608,
+        type: "Text"
+    },
+    {
+        name: "Ext - Interrupteur toilette",
+        topic: "zigbeeExt/Interrupteur toilette",
+        domoticzIdx: 1609,
+        type: "Text"
+    },
 
 ]
 
