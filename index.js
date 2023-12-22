@@ -112,6 +112,8 @@ client.on("message", (topic, message) => {
         }
 
 
+
+        // Extension
         if (msg.name === "Ext - Lampe bar") {
             let state = (msg.nvalue === 1) ? "ON" : "OFF";
             let cmd = {
@@ -153,7 +155,7 @@ client.on("message", (topic, message) => {
                 "brightness": brightness
             }
             console.log(cmd);
-            client.publish("zigbee2mqtt/Lampe Est droite/set", JSON.stringify(cmd));
+            client.publish("zigbeeExt/Lampe Est droite/set", JSON.stringify(cmd));
         }
         if (msg.name === "Ext - Lampe Est gauche") {
             let state = (msg.nvalue === 2) ? "ON" : "OFF";
@@ -163,7 +165,7 @@ client.on("message", (topic, message) => {
                 "brightness": brightness
             }
             console.log(cmd);
-            client.publish("zigbee2mqtt/Lampe Est gauche/set", JSON.stringify(cmd));
+            client.publish("zigbeeExt/Lampe Est gauche/set", JSON.stringify(cmd));
         }
         if (msg.name === "Ext - Lampe Nord droite") {
             let state = (msg.nvalue === 2) ? "ON" : "OFF";
@@ -173,7 +175,7 @@ client.on("message", (topic, message) => {
                 "brightness": brightness
             }
             console.log(cmd);
-            client.publish("zigbee2mqtt/Lampe Nord droite/set", JSON.stringify(cmd));
+            client.publish("zigbeeExt/Lampe Nord droite/set", JSON.stringify(cmd));
         }
         if (msg.name === "Ext - Lampe Nord gauche") {
             let state = (msg.nvalue === 2) ? "ON" : "OFF";
@@ -183,7 +185,7 @@ client.on("message", (topic, message) => {
                 "brightness": brightness
             }
             console.log(cmd);
-            client.publish("zigbee2mqtt/Lampe Nord gauche/set", JSON.stringify(cmd));
+            client.publish("zigbeeExt/Lampe Nord gauche/set", JSON.stringify(cmd));
         }
         if (msg.name === "Ext - Lampe Sud") {
             let state = (msg.nvalue === 2) ? "ON" : "OFF";
@@ -193,7 +195,7 @@ client.on("message", (topic, message) => {
                 "brightness": brightness
             }
             console.log(cmd);
-            client.publish("zigbee2mqtt/Lampe Sud/set", JSON.stringify(cmd));
+            client.publish("zigbeeExt/Lampe Sud/set", JSON.stringify(cmd));
         }
 
 
