@@ -46,6 +46,16 @@ client.on("connect", () => {
             console.log("Subscribe to domoticz/out/Ext - Lampe toilette");
         }
     });
+    client.subscribe("domoticz/out/Ext - Lampe cible", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Ext - Lampe cible");
+        }
+    });
+    client.subscribe("domoticz/out/Ext - Lampe exterieure", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Ext - Lampe exterieure");
+        }
+    });
 });
 
 client.on("message", (topic, message) => {
