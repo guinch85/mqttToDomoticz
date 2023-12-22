@@ -50,7 +50,16 @@ let devices = [
         topic: "zigbee2mqtt/Interrupteur bureau",
         domoticzIdx: 1601,
         type: "Text"
-    }
+    },
+
+    // Extension
+    {
+        name: "Ext - Capteur extension",
+        topic: "zigbeeExt/Capteur extension",
+        domoticzIdx: 1607,
+        type: "Temp+Humidity"
+    },
+
 ]
 
 module.exports = {
