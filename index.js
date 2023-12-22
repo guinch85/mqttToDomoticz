@@ -36,6 +36,16 @@ client.on("connect", () => {
             console.log("Subscribe to domoticz/out/Capteur chambre 1");
         }
     });
+    client.subscribe("domoticz/out/Ext - Lampe bar", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Ext - Lampe bar");
+        }
+    });
+    client.subscribe("domoticz/out/Ext - Lampe toilette", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Ext - Lampe toilette");
+        }
+    });
 });
 
 client.on("message", (topic, message) => {
@@ -66,6 +76,23 @@ client.on("message", (topic, message) => {
             client.publish("zigbee2mqtt/Vanne chambre 1/set", JSON.stringify(cmd));
         }
 
+
+        if (msg.name === "Ext - Lampe bar") {
+            let state = (msg.nvalue === 2) ? "ON" : "OFF";
+            let cmd = {
+                "state": state
+            }
+            console.log(cmd);
+            client.publish("zigbeeExt/Ext - Lampe bar/set", JSON.stringify(cmd));
+        }
+        if (msg.name === "Ext - Lampe toilette") {
+            let state = (msg.nvalue === 2) ? "ON" : "OFF";
+            let cmd = {
+                "state": state
+            }
+            console.log(cmd);
+            client.publish("zigbeeExt/Ext - Lampe toilette/set", JSON.stringify(cmd));
+        }
 
     } else {
         for (let d of devices) {
