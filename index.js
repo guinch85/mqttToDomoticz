@@ -56,6 +56,31 @@ client.on("connect", () => {
             console.log("Subscribe to domoticz/out/Ext - Lampe exterieure");
         }
     });
+    client.subscribe("domoticz/out/Ext - Lampe Nord droite", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Ext - Lampe Nord droite");
+        }
+    });
+    client.subscribe("domoticz/out/Ext - Lampe Est gauche", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Ext - Lampe Est gauche");
+        }
+    });
+    client.subscribe("domoticz/out/Ext - Lampe Est droite", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Ext - Lampe Est droite");
+        }
+    });
+    client.subscribe("domoticz/out/Ext - Lampe Nord gauche", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Ext - Lampe Nord gauche");
+        }
+    });
+    client.subscribe("domoticz/out/Ext - Lampe Sud", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Ext - Lampe Sud");
+        }
+    });
 });
 
 client.on("message", (topic, message) => {
@@ -119,6 +144,58 @@ client.on("message", (topic, message) => {
             console.log(cmd);
             client.publish("zigbeeExt/Lampe exterieure/set", JSON.stringify(cmd));
         }
+
+        if (msg.name === "Ext - Lampe Est droite") {
+            let state = (msg.nvalue === 2) ? "ON" : "OFF";
+            let brightness = (msg.Level / 100) * 254;
+            let cmd = {
+                "state": state,
+                "brightness": brightness
+            }
+            console.log(cmd);
+            client.publish("zigbee2mqtt/Lampe Est droite/set", JSON.stringify(cmd));
+        }
+        if (msg.name === "Ext - Lampe Est gauche") {
+            let state = (msg.nvalue === 2) ? "ON" : "OFF";
+            let brightness = (msg.Level / 100) * 254;
+            let cmd = {
+                "state": state,
+                "brightness": brightness
+            }
+            console.log(cmd);
+            client.publish("zigbee2mqtt/Lampe Est gauche/set", JSON.stringify(cmd));
+        }
+        if (msg.name === "Ext - Lampe Nord droite") {
+            let state = (msg.nvalue === 2) ? "ON" : "OFF";
+            let brightness = (msg.Level / 100) * 254;
+            let cmd = {
+                "state": state,
+                "brightness": brightness
+            }
+            console.log(cmd);
+            client.publish("zigbee2mqtt/Lampe Nord droite/set", JSON.stringify(cmd));
+        }
+        if (msg.name === "Ext - Lampe Nord gauche") {
+            let state = (msg.nvalue === 2) ? "ON" : "OFF";
+            let brightness = (msg.Level / 100) * 254;
+            let cmd = {
+                "state": state,
+                "brightness": brightness
+            }
+            console.log(cmd);
+            client.publish("zigbee2mqtt/Lampe Nord gauche/set", JSON.stringify(cmd));
+        }
+        if (msg.name === "Ext - Lampe Sud") {
+            let state = (msg.nvalue === 2) ? "ON" : "OFF";
+            let brightness = (msg.Level / 100) * 254;
+            let cmd = {
+                "state": state,
+                "brightness": brightness
+            }
+            console.log(cmd);
+            client.publish("zigbee2mqtt/Lampe Sud/set", JSON.stringify(cmd));
+        }
+
 
     } else {
         for (let d of devices) {
