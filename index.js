@@ -78,7 +78,7 @@ client.on("message", (topic, message) => {
 
 
         if (msg.name === "Ext - Lampe bar") {
-            let state = (msg.nvalue === 2) ? "ON" : "OFF";
+            let state = (msg.nvalue === 1) ? "ON" : "OFF";
             let cmd = {
                 "state": state
             }
@@ -86,7 +86,7 @@ client.on("message", (topic, message) => {
             client.publish("zigbeeExt/Lampe bar/set", JSON.stringify(cmd));
         }
         if (msg.name === "Ext - Lampe toilette") {
-            let state = (msg.nvalue === 2) ? "ON" : "OFF";
+            let state = (msg.nvalue === 1) ? "ON" : "OFF";
             let cmd = {
                 "state": state
             }
