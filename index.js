@@ -81,6 +81,43 @@ client.on("connect", () => {
             console.log("Subscribe to domoticz/out/Ext - Lampe Sud");
         }
     });
+
+
+
+
+
+    client.subscribe("domoticz/out/Chaudiere autorisation", (err) => {
+        if (!err) {
+            console.log("domoticz/out/Chaudiere autorisation");
+        }
+    });
+    client.subscribe("domoticz/out/Chaudiere economie", (err) => {
+        if (!err) {
+            console.log("domoticz/out/Chaudiere economie");
+        }
+    });
+    client.subscribe("domoticz/out/Chaudiere relai 3", (err) => {
+        if (!err) {
+            console.log("domoticz/out/Chaudiere relai 3");
+        }
+    });
+    client.subscribe("domoticz/out/Chaudiere relai 4", (err) => {
+        if (!err) {
+            console.log("domoticz/out/Chaudiere relai 4");
+        }
+    });
+
+
+    client.subscribe("zigbeeHome/Relais chaudiere", (err) => {
+        if (!err) {
+            console.log("zigbeeHome/Relais chaudiere");
+        }
+    });
+
+
+
+
+
 });
 
 client.on("message", (topic, message) => {
@@ -110,6 +147,39 @@ client.on("message", (topic, message) => {
             console.log(cmd);
             client.publish("zigbeeHome/Vanne chambre 1/set", JSON.stringify(cmd));
         }
+        if (msg.name === "Chaudiere autorisation") {
+            let state = (msg.nvalue === 1) ? "ON" : "OFF";
+            let cmd = {
+                "state_11": state
+            }
+            console.log(cmd);
+            client.publish("zigbeeHome/Relais chaudiere/set", JSON.stringify(cmd));
+        }
+        if (msg.name === "Chaudiere economie") {
+            let state = (msg.nvalue === 1) ? "ON" : "OFF";
+            let cmd = {
+                "state_12": state
+            }
+            console.log(cmd);
+            client.publish("zigbeeHome/Relais chaudiere/set", JSON.stringify(cmd));
+        }
+        if (msg.name === "Chaudiere relai 3") {
+            let state = (msg.nvalue === 1) ? "ON" : "OFF";
+            let cmd = {
+                "state_13": state
+            }
+            console.log(cmd);
+            client.publish("zigbeeHome/Relais chaudiere/set", JSON.stringify(cmd));
+        }
+        if (msg.name === "Chaudiere relai 4") {
+            let state = (msg.nvalue === 1) ? "ON" : "OFF";
+            let cmd = {
+                "state_14": state
+            }
+            console.log(cmd);
+            client.publish("zigbeeHome/Relais chaudiere/set", JSON.stringify(cmd));
+        }
+
 
 
 
