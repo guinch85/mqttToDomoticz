@@ -150,7 +150,7 @@ client.on("message", (topic, message) => {
         if (msg.name === "Chaudiere autorisation") {
             let state = (msg.nvalue === 1) ? "ON" : "OFF";
             let cmd = {
-                "state_11": state
+                "state_l1": state
             }
             console.log(cmd);
             client.publish("zigbeeHome/Relais chaudiere/set", JSON.stringify(cmd));
@@ -158,7 +158,7 @@ client.on("message", (topic, message) => {
         if (msg.name === "Chaudiere economie") {
             let state = (msg.nvalue === 1) ? "ON" : "OFF";
             let cmd = {
-                "state_12": state
+                "state_l2": state
             }
             console.log(cmd);
             client.publish("zigbeeHome/Relais chaudiere/set", JSON.stringify(cmd));
@@ -166,7 +166,7 @@ client.on("message", (topic, message) => {
         if (msg.name === "Chaudiere relai 3") {
             let state = (msg.nvalue === 1) ? "ON" : "OFF";
             let cmd = {
-                "state_13": state
+                "state_l3": state
             }
             console.log(cmd);
             client.publish("zigbeeHome/Relais chaudiere/set", JSON.stringify(cmd));
@@ -174,7 +174,7 @@ client.on("message", (topic, message) => {
         if (msg.name === "Chaudiere relai 4") {
             let state = (msg.nvalue === 1) ? "ON" : "OFF";
             let cmd = {
-                "state_14": state
+                "state_l4": state
             }
             console.log(cmd);
             client.publish("zigbeeHome/Relais chaudiere/set", JSON.stringify(cmd));
