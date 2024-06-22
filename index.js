@@ -31,11 +31,6 @@ client.on("connect", () => {
             console.log("Subscribe to domoticz/out/Lampe bureau");
         }
     });
-    client.subscribe("domoticz/out/Capteur chambre 1", (err) => {
-        if (!err) {
-            console.log("Subscribe to domoticz/out/Capteur chambre 1");
-        }
-    });
     client.subscribe("domoticz/out/Ext - Lampe bar", (err) => {
         if (!err) {
             console.log("Subscribe to domoticz/out/Ext - Lampe bar");
@@ -83,9 +78,6 @@ client.on("connect", () => {
     });
 
 
-
-
-
     client.subscribe("domoticz/out/Chaudiere autorisation", (err) => {
         if (!err) {
             console.log("domoticz/out/Chaudiere autorisation");
@@ -115,8 +107,11 @@ client.on("connect", () => {
     });
 
 
-
-
+    client.subscribe("domoticz/out/Chauffe-eau", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Chauffe-eau");
+        }
+    });
 
 });
 
@@ -138,15 +133,6 @@ client.on("message", (topic, message) => {
             client.publish("zigbeeHome/Lampe bureau/set", JSON.stringify(cmd));
         }
 
-        if (msg.name === "Capteur chambre 1") {
-            let temp = Math.trunc(parseFloat(msg.svalue1) * 100);
-
-            let cmd = {
-                "external_measured_room_sensor": temp
-            }
-            console.log(cmd);
-            client.publish("zigbeeHome/Vanne chambre 1/set", JSON.stringify(cmd));
-        }
         if (msg.name === "Chaudiere autorisation") {
             let state = (msg.nvalue === 1) ? "ON" : "OFF";
             let cmd = {
@@ -181,6 +167,14 @@ client.on("message", (topic, message) => {
         }
 
 
+        if (msg.name === "Chauffe-eau") {
+            let state = (msg.nvalue === 1) ? "ON" : "OFF";
+            let cmd = {
+                "state": state
+            }
+            console.log(cmd);
+            client.publish("zigbeeHome/Relai chauffe-eau/set", JSON.stringify(cmd));
+        }
 
 
         // Extension
