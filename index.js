@@ -307,7 +307,7 @@ client.on("message", (topic, message) => {
                         req.end();
                     }
                     {
-                        let energy = msg.energy;
+                        let energy = msg.energy*1000;
                         httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[2] + "svalue=" + energy + "&rssi=" + convertSignal(msg.linkquality);
                         let req = http.request(httpOptions);
                         req.on('error', function (e) {
