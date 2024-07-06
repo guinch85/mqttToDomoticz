@@ -295,7 +295,7 @@ client.on("message", (topic, message) => {
                     }
                     {
                         let power = msg.power;
-                        httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[1] + "&nvalue=0&svalue1=" + power + "&rssi=" + convertSignal(msg.linkquality);
+                        httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[1] + "svalue=" + power + "&rssi=" + convertSignal(msg.linkquality);
                         let req = http.request(httpOptions);
                         req.on('error', function (e) {
                             console.error("Request failed");
@@ -308,7 +308,7 @@ client.on("message", (topic, message) => {
                     }
                     {
                         let energy = msg.energy;
-                        httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[1] + "&nvalue=0&svalue1=" + energy + "&rssi=" + convertSignal(msg.linkquality);
+                        httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[2] + "svalue=" + energy + "&rssi=" + convertSignal(msg.linkquality);
                         let req = http.request(httpOptions);
                         req.on('error', function (e) {
                             console.error("Request failed");
