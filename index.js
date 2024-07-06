@@ -280,19 +280,19 @@ client.on("message", (topic, message) => {
                     requestReady = true;
                 }
                 if (d.type === "Tongou") {
-                    {
-                        let state = msg.state === "ON" ? 1 : 0;
-                        httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[0] + "&nvalue=" + state + "&rssi=" + convertSignal(msg.linkquality);
-                        let req = http.request(httpOptions);
-                        req.on('error', function (e) {
-                            console.error("Request failed");
-                            console.error(e);
-                        });
-                        req.on('timeout', function () {
-                            console.log("Request timeout");
-                        });
-                        req.end();
-                    }
+                    // {
+                    //     let state = msg.state === "ON" ? 1 : 0;
+                    //     httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[0] + "&nvalue=" + state + "&rssi=" + convertSignal(msg.linkquality);
+                    //     let req = http.request(httpOptions);
+                    //     req.on('error', function (e) {
+                    //         console.error("Request failed");
+                    //         console.error(e);
+                    //     });
+                    //     req.on('timeout', function () {
+                    //         console.log("Request timeout");
+                    //     });
+                    //     req.end();
+                    // }
                     {
                         let power = msg.power;
                         httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[1] + "svalue=" + power + "&rssi=" + convertSignal(msg.linkquality);
