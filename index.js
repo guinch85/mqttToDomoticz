@@ -107,12 +107,11 @@ client.on("connect", () => {
     });
 
 
-    client.subscribe("domoticz/out/Chauffe-eau", (err) => {
+    client.subscribe("domoticz/out/Chauffe-eau autorisation", (err) => {
         if (!err) {
-            console.log("Subscribe to domoticz/out/Chauffe-eau");
+            console.log("Subscribe to domoticz/out/Chauffe-eau autorisation");
         }
     });
-
 });
 
 client.on("message", (topic, message) => {
@@ -167,13 +166,13 @@ client.on("message", (topic, message) => {
         }
 
 
-        if (msg.name === "Chauffe-eau") {
+        if (msg.name === "Chauffe-eau autorisation") {
             let state = (msg.nvalue === 1) ? "ON" : "OFF";
             let cmd = {
                 "state": state
             }
             console.log(cmd);
-            client.publish("zigbeeHome/Relai chauffe-eau/set", JSON.stringify(cmd));
+            client.publish("zigbeeHome/Contacteur chauffe-eau/set", JSON.stringify(cmd));
         }
 
 
@@ -280,6 +279,49 @@ client.on("message", (topic, message) => {
                     // console.log(httpOptions.path);
                     requestReady = true;
                 }
+                if (d.type === "Tongou") {
+                    {
+                        let state = msg.state === "ON" ? 1 : 0;
+                        httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[0] + "&nvalue=" + state + "&rssi=" + convertSignal(msg.linkquality);
+                        let req = http.request(httpOptions);
+                        req.on('error', function (e) {
+                            console.error("Request failed");
+                            console.error(e);
+                        });
+                        req.on('timeout', function () {
+                            console.log("Request timeout");
+                        });
+                        req.end();
+                    }
+                    {
+                        let power = msg.power;
+                        httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[1] + "&nvalue=0&svalue1=" + power + "&rssi=" + convertSignal(msg.linkquality);
+                        let req = http.request(httpOptions);
+                        req.on('error', function (e) {
+                            console.error("Request failed");
+                            console.error(e);
+                        });
+                        req.on('timeout', function () {
+                            console.log("Request timeout");
+                        });
+                        req.end();
+                    }
+                    {
+                        let energy = msg.energy;
+                        httpOptions.path = domoticzApiConfig.path + d.domoticzIdx[1] + "&nvalue=0&svalue1=" + energy + "&rssi=" + convertSignal(msg.linkquality);
+                        let req = http.request(httpOptions);
+                        req.on('error', function (e) {
+                            console.error("Request failed");
+                            console.error(e);
+                        });
+                        req.on('timeout', function () {
+                            console.log("Request timeout");
+                        });
+                        req.end();
+                    }
+
+                }
+
 
                 if (requestReady) {
                     let req = http.request(httpOptions);

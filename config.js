@@ -51,6 +51,12 @@ let devices = [
         domoticzIdx: 1601,
         type: "Text"
     },
+    {
+        name: "Contacteur chauffe-eau",
+        topic: "zigbeeHome/Contacteur chauffe-eau",
+        domoticzIdx: [1631,1630,1632],
+        type: "Tongou"
+    },
 
     // Extension
     {
