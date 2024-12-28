@@ -34,6 +34,12 @@ let devices = [
         type: "Temp+Humidity"
     },
     {
+        name: "Capteur extérieur",
+        topic: "zigbeeHome/Capteur extérieur",
+        domoticzIdx: 1636,
+        type: "Temp+Humidity"
+    },
+    {
         name: "Capteur salle de bain",
         topic: "zigbeeHome/Capteur salle de bain",
         domoticzIdx: 1603,
