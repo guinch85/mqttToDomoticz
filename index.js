@@ -112,6 +112,12 @@ client.on("connect", () => {
             console.log("Subscribe to domoticz/out/Chauffe-eau autorisation");
         }
     });
+
+    client.subscribe("domoticz/out/Ext - Chauffe-eau autorisation", (err) => {
+        if (!err) {
+            console.log("Subscribe to domoticz/out/Ext - Chauffe-eau autorisation");
+        }
+    });
 });
 
 client.on("message", (topic, message) => {
@@ -259,6 +265,15 @@ client.on("message", (topic, message) => {
             }
             console.log(cmd);
             client.publish("zigbeeExt/Lampe Sud/set", JSON.stringify(cmd));
+        }
+
+        if (msg.name === "Ext - Chauffe-eau autorisation") {
+            let state = (msg.nvalue === 1) ? "ON" : "OFF";
+            let cmd = {
+                "state": state
+            }
+            console.log(cmd);
+            client.publish("zigbeeExt/Contacteur chauffe-eau/set", JSON.stringify(cmd));
         }
 
 
